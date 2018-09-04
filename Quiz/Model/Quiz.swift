@@ -31,7 +31,7 @@ class Quiz: Object, Mappable, Generics {
     }
     
     static func url() -> String {
-        let url = "http://quiz.o2.pl/api/v1/quizzes/0/3"
+        let url = "http://quiz.o2.pl/api/v1/quizzes/0/20"
         return url
     }
     
@@ -100,6 +100,13 @@ class QuizCategory: Object, Mappable {
         id      <- map["id"]
         name    <- map["name"]
     }
+}
+
+func getObjects<T:Object>()->[T] {
+    let realm = try! Realm()
+    let realmResults = realm.objects(T.self)
+    return Array(realmResults)
+    
 }
 
 
